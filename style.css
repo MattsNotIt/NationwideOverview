@@ -39,13 +39,14 @@ html,body{height:100%;margin:0;background:var(--bg);color:#071034}
 
 .actions-row{display:flex;gap:10px;justify-content:space-between;margin-bottom:12px}
 .action{flex:1;background:transparent;border:none;padding:6px;display:flex;flex-direction:column;align-items:center;gap:8px}
-.action .action-icon{width:52px;height:52px;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 12px rgba(7,16,36,0.06);font-size:20px}
+.action .action-icon{width:52px;height:52px;border-radius:50%;background:#e3ecff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 12px rgba(7,16,36,0.06);font-size:20px;color:var(--nav)}
 .action-label{font-size:12px;text-align:center;color:var(--muted);line-height:1.1}
 
 .transactions-list{margin-bottom:68px}
 .tx-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
 .tx-header h3{margin:0;font-size:16px}
-.tx-header .search{font-size:13px;color:var(--muted)}
+.tx-header .search{font-size:13px;color:#0b5fc7;cursor:pointer;font-weight:600}
+.tx-header .search:hover{text-decoration:underline}
 
 .tx-section{margin-bottom:12px}
 .tx-section .section-title{font-size:13px;color:var(--muted);display:flex;justify-content:space-between;padding:8px 6px}
@@ -79,4 +80,3 @@ html,body{height:100%;margin:0;background:var(--bg);color:#071034}
 @media (min-width:421px){
 	body{background:linear-gradient(180deg,var(--bg),#fff)}
 }
-
