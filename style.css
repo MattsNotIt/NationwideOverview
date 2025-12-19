@@ -3,7 +3,7 @@
 	--bg:#f2f6fb;
 	--panel:#f8fbff;
 	--card:#ffffff;
-	--nav:#062d66;
+	--nav:#011546;
 	--accent:#e9f0ff;
 	--muted:#6b7280;
 	--success:#16a34a;
@@ -79,3 +79,4 @@ html,body{height:100%;margin:0;background:var(--bg);color:#071034}
 @media (min-width:421px){
 	body{background:linear-gradient(180deg,var(--bg),#fff)}
 }
+
