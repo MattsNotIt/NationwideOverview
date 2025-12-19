@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Online Banking — George Hancock</title>
+	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+	<header class="mobile-top">
+		<button class="back" aria-label="Back">←</button>
+		<div class="acct-title">
+			<div class="title">FlexAccount</div>
+			<div id="mini-acct" class="mini">07-00-30 • 87654321</div>
+		</div>
+		<button class="more" aria-label="More">●●</button>
+	</header>
+
+	<main class="mobile-frame">
+		<section class="account-card card-top">
+			<div class="card-left">
+				<div class="label small">FlexAccount</div>
+				<div id="balance" class="amount large">£0.00</div>
+				<div class="avail small">Available</div>
+			</div>
+			<div class="card-right">
+				<button class="info">i</button>
+				<div class="overdraft">Overdraft limit: <strong>£500.00</strong></div>
+			</div>
+		</section>
+
+		<section class="actions-row">
+			<button class="action">
+				<div class="action-icon">⇄</div>
+				<div class="action-label">Pay or move money</div>
+			</button>
+			<button class="action">
+				<div class="action-icon">💳</div>
+				<div class="action-label">Manage cards</div>
+			</button>
+			<button class="action">
+				<div class="action-icon">⋯</div>
+				<div class="action-label">More options</div>
+			</button>
+		</section>
+
+		<section class="transactions-list">
+			<div class="tx-header">
+				<h3>Transactions</h3>
+				<div class="search">Search & filter</div>
+			</div>
+
+			<div id="tx-sections">
+				<!-- Transactions grouped populated by script.js -->
+			</div>
+		</section>
+
+	</main>
+
+	<nav class="bottom-nav">
+		<button class="nav-item active">🏠<span>Home</span></button>
+		<button class="nav-item">🔁<span>Payments</span></button>
+		<button class="nav-item">💷<span>Products</span></button>
+		<button class="nav-item">❓<span>Help</span></button>
+		<button class="nav-item">⋯<span>More</span></button>
+	</nav>
+
+	<script src="script.js"></script>
+</body>
+</html>
