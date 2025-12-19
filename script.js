@@ -1,17 +1,17 @@
 // Mobile-friendly sample account data for George Hancock
 const account = {
 	name: 'George Hancock',
-	accountNumber: '451234567890',
-	balance: 569.43,
-	available: 569.43,
-	overdraftLimit: 500.00,
+	accountNumber: '30318705',
+	balance: 1463.43,
+	available: 1463.43,
+	overdraftLimit: 2000.00,
 	transactions: [
-		{date:'2025-12-19', desc:'Local Fruit & Veg', category:'Groceries', amount: -0.78, icon:'🥑'},
-		{date:'2025-12-19', desc:'Emily Trimble', category:'Transfer', amount: 100.00, icon:'👤'},
-		{date:'2025-12-19', desc:'Nationwide', category:'Payment', amount: -40.00, icon:'🏦'},
-		{date:'2025-12-19', desc:"Freddy's Diner", category:'Dining', amount: -15.00, icon:'🍔'},
-		{date:'2025-12-18', desc:'Coffee Connect', category:'Dining', amount: -2.50, icon:'☕'},
-		{date:'2025-12-17', desc:'Refund - Store', category:'Other', amount: 5.00, icon:'🔁'}
+		{date:'2025-19-12', desc:'McDonalds', category:'Dining', amount: -7.43, icon:'🥑'},
+		{date:'2025-17-12', desc:'Skinport', category:'Transfer', amount: 63.19, icon:'👤'},
+		{date:'2025-12-12', desc:'Steam', category:'Online Services', amount: -40.00, icon:'🏦'},
+		{date:'2025-12-12', desc:"Freddy's Diner", category:'Dining', amount: -15.00, icon:'🍔'},
+		{date:'2025-11-12', desc:'Coffee Connect', category:'Dining', amount: -2.50, icon:'☕'},
+		{date:'2025-8-12', desc:'', category:'Other', amount: 5.00, icon:'🔁'}
 	]
 };
 
