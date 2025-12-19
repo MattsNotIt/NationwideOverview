@@ -10,6 +10,7 @@ const account = {
 		{date:'2025-12-17', desc:'Skinport', category:'Transfer', amount:63.19, key:'transfer'},
 		{date:'2025-12-12', desc:'Steam', category:'Online Vendor', amount:-29.99, key:'online'},
 		{date:'2025-12-12', desc:"Steam", category:'Online Vendor', amount:-4.99, key:'online'},
+		{date:'2025-12-11', desc:'IBISHtl', category:'Holiday', amount:-161.00, key:'holiday'},
 		{date:'2025-12-11', desc:'XO BleTwr', category:'Holiday', amount:-139.99, key:'holiday'},
 	]
 };
@@ -99,15 +100,25 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 // returns a small SVG string for the transaction key/type
 function iconForKey(key, type){
-	// simple mapping; these are neutral icons, not trademarks
-	const svgs = {
-		mcd: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="4" fill="#E6F8F0"/><path d="M7 12h10" stroke="#10B981" stroke-width="1.6" stroke-linecap="round"/></svg>',
-		transfer: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="4" fill="#EEF2FF"/><path d="M8 12h8M10 9l3-3 3 3" stroke="#6366F1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-		online: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="4" fill="#FFF6E6"/><path d="M7 8h10v8H7z" stroke="#F59E0B" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-		diner: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="4" fill="#FFEFF0"/><path d="M8 12h6" stroke="#EF4444" stroke-width="1.6" stroke-linecap="round"/></svg>',
-		holiday: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="4" fill="#FFF3F0"/><path d="M8 15h6" stroke="#FB7185" stroke-width="1.6" stroke-linecap="round"/></svg>',
-		refund: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="4" fill="#ECFDF5"/><path d="M8 12h8M12 8v8" stroke="#10B981" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+	// Prefer using image logos placed in the project root. If an image file
+	// for the merchant exists, return an <img> tag string pointing to it.
+	// Fallback to neutral SVG if the image isn't available.
+	const imgMap = {
+		// key: filename (use PNGs placed in project root)
+		mcd: 'mcd.png',          // restaurant / McDonalds-like merchant
+		online: 'steam.png',     // Steam / online vendor
+		holiday: 'hotel.png',    // Hotel / holiday icon
+		transfer: 'skinport.png' // Skinport / transfer logo
 	};
-	return svgs[key] || '<svg width="20" height="20"><rect x="0" y="0" width="20" height="20" rx="4" fill="#E9EEF8"/></svg>';
+
+	const filename = imgMap[key];
+	if(filename){
+		// Use a small img element; CSS ensures it fits the tx-icon box.
+		// The HTML uses innerHTML so returning an <img> string is fine.
+		return `<img src="${filename}" alt="${key}" class="tx-icon-img">`;
+	}
+
+	// Neutral fallback SVG (keeps visual consistency)
+	return '<svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="24" height="24" rx="4" fill="#E9EEF8"/></svg>';
 }
 
