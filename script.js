@@ -1,4 +1,3 @@
-// Mobile-friendly sample account data for George Hancock
 const account = {
 	name: 'George Hancock',
 	accountNumber: '30318705',
@@ -7,6 +6,8 @@ const account = {
 	overdraftLimit: 2000.00,
 	transactions: [
 		{date:'2025-12-19', desc:'McDonalds', category:'Dining', amount:-7.43, key:'mcd'},
+		{date:'2025-12-18', desc:'Subway', category:'Dining', amount:-7.99, key:'subway'},
+		{date:'2025-12-18', desc:'Aldi', category:'Grocery', amount:-36.26, key:'aldi'},
 		{date:'2025-12-17', desc:'Skinport', category:'Transfer', amount:63.19, key:'transfer'},
 		{date:'2025-12-12', desc:'Steam', category:'Online Vendor', amount:-29.99, key:'online'},
 		{date:'2025-12-12', desc:"Steam", category:'Online Vendor', amount:-4.99, key:'online'},
@@ -31,18 +32,18 @@ function groupByDay(txs){
 }
 
 function renderMobile(){
-	// balance and overdraft
+	// balance and overdraft (backup????)
 	document.getElementById('balance').textContent = fmtCurrency(account.balance);
 
-	// transactions grouped by date, most recent first
+	// transactions grouped by date with the most recent being at the top obviously
 	const container = document.getElementById('tx-sections');
 	container.innerHTML = '';
 	const txs = account.transactions.slice().sort((a,b)=> new Date(b.date) - new Date(a.date));
-	// compute cumulative sums per group so we can show a running balance for each group's header
+
 	const grouped = groupByDay(txs);
 	const keys = Object.keys(grouped).sort((a,b)=> new Date(b) - new Date(a));
 
-	// cumulative of transactions we've iterated (most recent first)
+	// procedurally get the amount of money remaning so I dont need to keep going over and over
 	let cumulativeBefore = 0;
 	for(const k of keys){
 		const items = grouped[k];
@@ -59,7 +60,7 @@ function renderMobile(){
 		else if(diff===1) label='Yesterday';
 		else label = dt.toLocaleDateString();
 
-		// day's header balance: account.balance minus the sum of transactions that are more recent than this group
+		// check if its today, yesterday or other date
 		const groupSum = items.reduce((s,it)=> s + (it.amount||0), 0);
 		const headerBalance = account.balance - cumulativeBefore;
 		title.innerHTML = `<div>${label}</div><div>${fmtCurrency(headerBalance)}</div>`;
@@ -98,27 +99,23 @@ document.addEventListener('DOMContentLoaded',()=>{
 	renderMobile();
 });
 
-// returns a small SVG string for the transaction key/type
 function iconForKey(key, type){
-	// Prefer using image logos placed in the project root. If an image file
-	// for the merchant exists, return an <img> tag string pointing to it.
-	// Fallback to neutral SVG if the image isn't available.
 	const imgMap = {
 		// key: filename (use PNGs placed in project root)
-		mcd: 'mcd.png',          // restaurant / McDonalds-like merchant
+		mcd: 'mcd.png',          // restaurant / McDonalds
 		online: 'steam.png',     // Steam / online vendor
 		holiday: 'hotel.png',    // Hotel / holiday icon
-		transfer: 'skinport.png' // Skinport / transfer logo
+		transfer: 'skinport.png', // Skinport / transfer logo
+		subway: 'subway.png',   // restaurant / subway
+		aldi: "aldi.png"	// grocery / aldi
 	};
 
 	const filename = imgMap[key];
 	if(filename){
-		// Use a small img element; CSS ensures it fits the tx-icon box.
-		// The HTML uses innerHTML so returning an <img> string is fine.
 		return `<img src="${filename}" alt="${key}" class="tx-icon-img">`;
 	}
 
-	// Neutral fallback SVG (keeps visual consistency)
+	// Keep the consistency of the UI by returning a default icon if it cant find the pngs
 	return '<svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="24" height="24" rx="4" fill="#E9EEF8"/></svg>';
 }
 
