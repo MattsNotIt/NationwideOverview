@@ -1,7 +1,7 @@
 
 :root{
 	--bg:#f2f6fb;
-	--panel:#f8fbff;
+	--panel:#f1f5ff;
 	--card:#ffffff;
 	--nav:#011546;
 	--accent:#e9f0ff;
@@ -41,6 +41,8 @@ html,body{height:100%;margin:0;background:var(--bg);color:#071034}
 .action{flex:1;background:transparent;border:none;padding:6px;display:flex;flex-direction:column;align-items:center;gap:8px}
 .action .action-icon{width:52px;height:52px;border-radius:50%;background:#e3ecff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 12px rgba(7,16,36,0.06);font-size:20px;color:var(--nav)}
 .action-label{font-size:12px;text-align:center;color:var(--muted);line-height:1.1}
+/* image inside the circular action icon */
+.action .action-icon img.action-icon-img{width:28px;height:28px;object-fit:contain;display:block}
 
 .transactions-list{margin-bottom:68px}
 .tx-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
