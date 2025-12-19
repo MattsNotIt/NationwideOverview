@@ -29,11 +29,18 @@ html,body{height:100%;margin:0;background:var(--bg);color:#071034}
 .card-top .card-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
 .card-top .info{background:#fff;border-radius:50%;width:36px;height:36px;border:1px solid rgba(0,0,0,0.06)}
 .card-top .overdraft{font-size:13px;color:var(--muted)}
+.card-left .overdraft{margin-top:8px}
+
+/* Balance meta: divider between Available and Overdraft inside the card */
+.balance-meta{display:flex;flex-direction:column}
+.balance-meta .divider{height:1px;background:rgba(11,95,199,0.06);margin:8px 0;border-radius:1px}
+.balance-meta .avail{padding-bottom:4px}
+.balance-meta .overdraft{padding-top:4px}
 
 .actions-row{display:flex;gap:10px;justify-content:space-between;margin-bottom:12px}
-.action{flex:1;background:transparent;border:none;padding:10px;border-radius:10px;background:var(--card);display:flex;flex-direction:column;align-items:center;gap:6px;box-shadow:0 6px 12px rgba(7,16,36,0.04)}
-.action-icon{font-size:18px}
-.action-label{font-size:12px;text-align:center;color:var(--muted)}
+.action{flex:1;background:transparent;border:none;padding:6px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.action .action-icon{width:52px;height:52px;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 12px rgba(7,16,36,0.06);font-size:20px}
+.action-label{font-size:12px;text-align:center;color:var(--muted);line-height:1.1}
 
 .transactions-list{margin-bottom:68px}
 .tx-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
@@ -52,9 +59,21 @@ html,body{height:100%;margin:0;background:var(--bg);color:#071034}
 .tx-amt.negative{color:var(--danger)}
 
 .bottom-nav{position:fixed;left:0;right:0;bottom:0;background:var(--nav);display:flex;justify-content:space-around;padding:12px 6px;border-top-left-radius:12px;border-top-right-radius:12px}
-.nav-item{background:transparent;border:none;color:#fff;font-size:14px;display:flex;flex-direction:column;align-items:center;gap:4px}
-.nav-item span{font-size:11px}
-.nav-item.active{opacity:1}
+.nav-item{background:transparent;border:none;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center;padding:8px 12px;border-radius:8px}
+.nav-item img.nav-icon{display:block;width:28px;height:28px;object-fit:contain}
+.nav-item:focus{outline:2px solid rgba(255,255,255,0.12)}
+.nav-item.active{background:linear-gradient(180deg, rgba(255,255,255,0.06), transparent);box-shadow:inset 0 -4px 0 rgba(255,255,255,0.02)}
+
+/* ensure the bottom nav edges blend with phone rounded look */
+.bottom-nav{padding:10px 8px}
+.nav-item.active img.nav-icon{filter:brightness(1.05) saturate(1.1)}
+
+/* Transaction chevron */
+.tx-item::after{content:'';width:6px;height:10px;border-right:2px solid rgba(12,23,44,0.12);border-bottom:2px solid rgba(12,23,44,0.12);transform:rotate(-45deg);margin-left:8px}
+
+/* Make tx-icon a bit softer and circular like the screenshot */
+.tx-icon{border-radius:10px;font-size:18px}
+
 
 /* make sure the page uses full height on narrow screens */
 @media (min-width:421px){
